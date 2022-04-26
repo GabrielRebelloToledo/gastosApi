@@ -20,6 +20,11 @@ router.post('/', ReceitaController.create);
 router.get('/', ReceitaController.findAll);
 //faz a soma de todos os saldos dos alunos para mostrar na tela  
 router.get('/sum', ReceitaController.SumAllInd);
+
+
+router.get('/:p1/:p2', ReceitaController.SumAllIndrt);
+
+router.get('/poup/:p1/:p2', ReceitaController.SumAllIndrtPopanca);
 /* 
 
 //retorna um unico dado por id

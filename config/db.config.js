@@ -5,15 +5,15 @@ const mysql = require('mysql');
 //conexão com o banco de dados mySql
 
 const dbConn = mysql.createConnection({
- host: 'localhost',
+    host: 'localhost',
 
     user: 'root',
 
     password: '',
 
-    database: 'financeiro' 
+    database: 'gastos'
 
-    
+
 });
 
 dbConn.connect(function(err) {

@@ -29,6 +29,22 @@ exports.findByIdAll = function(req, res) {
         res.json(employee);
     });
 };
+exports.SumAllIndrt = function(req, res) {
+    Receita.SumAllIndrtCorrente(req.params.p1, req.params.p2, function(err, employee) {
+        //console.log(req.params.id)
+        if (err)
+            res.send(err);
+        res.json(employee);
+    });
+};
+exports.SumAllIndrtPopanca = function(req, res) {
+    Receita.SumAllIndrtPopanca(req.params.p1, req.params.p2, function(err, employee) {
+        //console.log(req.params.id)
+        if (err)
+            res.send(err);
+        res.json(employee);
+    });
+};
 
 exports.SumAllInd = function(req, res) {
     Receita.SumAllInd(function(err, employee) {

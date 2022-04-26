@@ -11,7 +11,7 @@ var Receita = function(receita) {
     this.categoria = receita.categoria;
     this.descricao = receita.descricao;
     this.data = receita.data;
-    
+
 };
 
 
@@ -19,7 +19,7 @@ var Receita = function(receita) {
 
 
 Receita.create = function(newReceita, result) {
-     dbConn.query("INSERT INTO receitas SET ?", newReceita, function(err, res) {
+    dbConn.query("INSERT INTO receitas SET ?", newReceita, function(err, res) {
         if (err) {
             //console.log("error: ", err);
 
@@ -28,9 +28,9 @@ Receita.create = function(newReceita, result) {
             //console.log(newEmp);
             result(null, res.insertId);
         }
-    }); 
+    });
 
-    
+
 };
 
 
@@ -49,6 +49,32 @@ Receita.findById = function(id, result) {
 };
 Receita.findByIdAll = function(id, result) {
     dbConn.query("Select * from employees where usuario = ? ", id, function(err, res) {
+        if (err) {
+            //console.log("error: ", err);
+            result(err, null);
+        } else {
+            //console.log('Aquii!!!')
+            result(null, res);
+        }
+    });
+};
+Receita.SumAllIndrtCorrente = function(p1, p2, result) {
+    /* console.log("SELECT id, usuarioId, valor, SUM(valor) AS total FROM receitas WHERE data BETWEEN " + p1 + "AND " + p2); */
+
+    dbConn.query("SELECT id, usuarioId, valor, SUM(valor) AS total FROM receitas WHERE data BETWEEN ? AND ? AND tipo = ?", [p1, p2, 'Conta Corrente'], function(err, res) {
+        if (err) {
+            //console.log("error: ", err);
+            result(err, null);
+        } else {
+            //console.log('Aquii!!!')
+            result(null, res);
+        }
+    });
+};
+Receita.SumAllIndrtPopanca = function(p1, p2, result) {
+    /* console.log("SELECT id, usuarioId, valor, SUM(valor) AS total FROM receitas WHERE data BETWEEN " + p1 + "AND " + p2); */
+
+    dbConn.query("SELECT id, usuarioId, valor, SUM(valor) AS total FROM receitas WHERE data BETWEEN ? AND ? AND tipo = ?", [p1, p2, 'Poupanca'], function(err, res) {
         if (err) {
             //console.log("error: ", err);
             result(err, null);
@@ -131,4 +157,4 @@ Receita.delete = function(id, result) {
 
 
 module.exports =
-Receita
+    Receita

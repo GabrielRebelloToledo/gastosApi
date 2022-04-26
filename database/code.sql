@@ -24,8 +24,10 @@ CREATE  TABLE IF NOT EXISTS `receitas` (
   `usuarioId` INTEGER NOT NULL,
   `valor` DECIMAL(10,2),
   `categoria` VARCHAR(255) NOT NULL,
+  `tipo` VARCHAR(255) NOT NULL,
   `descricao` VARCHAR(255) NOT NULL,
-  `data` VARCHAR(255) NOT NULL,
+  `data` date,
+
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `despesas` (
@@ -34,7 +36,7 @@ CREATE  TABLE IF NOT EXISTS `despesas` (
   `valor` DECIMAL(10,2),
   `categoria` VARCHAR(255) NOT NULL,
   `descricao` VARCHAR(255) NOT NULL,
-  `data` VARCHAR(255) NOT NULL,
+  `data` date,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
